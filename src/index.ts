@@ -1,4 +1,8 @@
-module.exports = (obj, replacer, space) => {
+export const stringify = (
+  obj: any,
+  replacer: <T>(k: string, v: T) => T,
+  space: number
+) => {
   const seen = new WeakSet()
   return JSON.stringify(
     obj,
