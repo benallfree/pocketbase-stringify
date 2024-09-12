@@ -1,15 +1,16 @@
 {
   "name": "pocketbase-stringify",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format cjs --out-dir dist",
+    "watch": "tsup src/index.ts --dts --format cjs --out-dir dist --watch"
+  },
   "version": "0.0.1",
   "devDependencies": {
-    "esbuild": "^0.23.1"
-  },
-  "scripts": {
-    "build": "esbuild src/index.ts --format=cjs --sourcemap --bundle --outfile=dist/index.js",
-    "watch": "esbuild src/index.ts --format=cjs  --watch  --sourcemap --bundle --outfile=dist/index.js"
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
   }
 }

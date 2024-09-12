@@ -1,8 +1,17 @@
-export const stringify = (
-  obj: any,
-  replacer: <T>(k: string, v: T) => T,
-  space: number
-) => {
+export const defaultReplacer = (k: string, v: any) => {
+  if (v instanceof Error) {
+    return v.stack
+  }
+  if (v instanceof RegExp) {
+    return v.toString()
+  }
+  if (v instanceof Function) {
+    return v.toString()
+  }
+  return v
+}
+
+export const stringify = (obj: any, replacer = defaultReplacer, space = 0) => {
   const seen = new WeakSet()
   return JSON.stringify(
     obj,
