@@ -28,3 +28,13 @@ export const stringify = (obj: any, _replacer = defaultReplacer, space = 0) => {
     space
   )
 }
+
+export const parse = <T = any>(str: string): T => {
+  try {
+    return JSON.parse(str) as T
+  } catch (e) {
+    return null
+  }
+}
+
+export const toObject = <T>(input: any): T | null => parse<T>(stringify(input))
